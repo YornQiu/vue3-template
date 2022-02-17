@@ -1,0 +1,84 @@
+/*
+ * @Author: Yorn Qiu
+ * @Date: 2022-02-15 17:51:32
+ * @LastEditors: Yorn Qiu
+ * @LastEditTime: 2022-02-17 12:37:00
+ * @Description: css variables
+ * @FilePath: /vue3-template/src/styles/variables.css
+ */
+
+:root {
+  /* theme-color 主题色 */
+  --theme-color: #4ca9ff;
+  --theme-color-dark: #3685d9;
+  --theme-color-light: #349DFF;
+  --theme-color-hover: #349DFF;
+  --theme-color-active: #349DFF;
+  --theme-color-disabled: #4778B3;
+
+  /* text-color 文字颜色 */
+  --text-color: #000;
+  --text-color-dark: #9b9b9b;
+  --text-color-light: #4ca9ff;
+
+  /* background-color 背景色 */
+  --bg-color: #fff;
+  --bg-color-aside: #eff0f3;
+  --bg-color-header: #ebeff3;
+  --bg-color-footer: #ebeff3;
+  --bg-color-content: #fff;
+
+  /* border 边框 */
+  --border-color: #00aaff;
+  --border-width: 1px;
+  --border-radius: 0;
+  --border-type: solid;
+  --border-base: var(--border-width) solid var(--border-color);
+
+  /* font-size 字体 */
+  --font-size: 14px;
+  --font-size-s: 12px;
+  --font-size-l: 18px;
+
+  /* layout */
+  --layout-header-height: 60px;
+  --layout-aside-width: 300px;
+}
+
+[data-theme="dark"] {
+  /* theme-color 主题色 */
+  --theme-color: #4ca9ff;
+  --theme-color-dark: #3685d9;
+  --theme-color-light: #349DFF;
+  --theme-color-hover: #349DFF;
+  --theme-color-active: #349DFF;
+  --theme-color-disabled: #4778B3;
+
+  /* text-color 文字颜色 */
+  --text-color: #f0f4ff;
+  --text-color-dark: #A6ACCD;
+  --text-color-light: #79C0FF;
+
+  /* background-color 背景色 */
+  --bg-color: #051029;
+  --bg-color-aside: #0d2745;
+  --bg-color-header: #032045;
+  --bg-color-footer: #032045;
+  --bg-color-content: #051029;
+
+  /* border 边框 */
+  --border-color: #00aaff;
+  --border-width: 1px;
+  --border-radius: 0;
+  --border-type: solid;
+  --border-base: var(--border-width) solid var(--border-color);
+
+  /* font-size 字体 */
+  --font-size: 14px;
+  --font-size-s: 12px;
+  --font-size-l: 18px;
+
+  /* layout */
+  --layout-header-height: 60px;
+  --layout-aside-width: 300px;
+}

@@ -1,0 +1,744 @@
+/*
+ * @Author: Yorn Qiu
+ * @Date: 2020-01-01 00:00:00
+ * @LastEditors: Yorn Qiu
+ * @LastEditTime: 2022-02-17 15:58:19
+ * @Description: base css 基础样式类，已包含normalize.css
+ * @FilePath: /vue3-template/src/styles/base.css
+ */
+
+/**
+ * 布局
+ */
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+
+.pa {
+  position: absolute;
+}
+.pr {
+  position: relative;
+}
+
+.db {
+  display: block;
+}
+.di {
+  display: inline;
+}
+.dib {
+  display: inline-block;
+}
+.dg {
+  display: grid;
+}
+.df {
+  display: flex;
+}
+.dfc {
+  display: flex;
+  flex-direction: column;
+}
+.dt {
+  display: table;
+}
+.dtc {
+  display: table-cell;
+}
+.dn {
+  display: none;
+}
+
+.flex1 {
+  flex: 1;
+}
+.flex2 {
+  flex: 2;
+}
+.flex3 {
+  flex: 3;
+}
+.flex4 {
+  flex: 4;
+}
+
+.ai-baseline {
+  align-items: baseline;
+}
+
+.ai-center {
+  align-items: center;
+}
+
+.w100 {
+  width: 100%;
+}
+
+.h100 {
+  height: 100%;
+}
+
+.vt {
+  vertical-align: top;
+}
+.vm {
+  vertical-align: middle;
+}
+.vb {
+  vertical-align: bottom;
+}
+
+.hide {
+  visibility: hidden;
+}
+.show {
+  visibility: visible;
+}
+
+.auto {
+  overflow: auto;
+}
+.hidden {
+  overflow: hidden;
+}
+.scroll {
+  overflow: scroll;
+}
+
+.clearfix {
+  zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table;
+  line-height: 0;
+}
+.clearfix:after {
+  clear: both;
+}
+.clear {
+  clear: both;
+}
+
+/**
+ * 文本
+ */
+.fs12 {
+  font-size: 12px;
+}
+.fs14 {
+  font-size: 14px;
+}
+.fs16 {
+  font-size: 16px;
+}
+.fs18 {
+  font-size: 18px;
+}
+.fs20 {
+  font-size: 20px;
+}
+
+.underline {
+  text-decoration: underline;
+}
+.bold {
+  font-weight: bold;
+}
+.italic {
+  font-style: italic;
+}
+
+.pre {
+  white-space: pre;
+}
+.wrap {
+  white-space: normal;
+}
+.nowrap {
+  white-space: nowrap;
+}
+.ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.tc {
+  text-align: center;
+}
+.tr {
+  text-align: right;
+}
+.tl {
+  text-align: left;
+}
+
+.pointer {
+  cursor: pointer;
+}
+.wait {
+  cursor: wait;
+}
+.not-allowed {
+  cursor: not-allowed;
+}
+
+/**
+ * 间距
+ */
+.mg0 {
+  margin: 0;
+}
+.mg4 {
+  margin: 4px;
+}
+.mg8 {
+  margin: 8px;
+}
+.mg10 {
+  margin: 10px;
+}
+.mg12 {
+  margin: 12px;
+}
+.mg16 {
+  margin: 16px;
+}
+.mg20 {
+  margin: 20px;
+}
+.mg24 {
+  margin: 24px;
+}
+.mg30 {
+  margin: 30px;
+}
+.mg32 {
+  margin: 32px;
+}
+.mg36 {
+  margin: 36px;
+}
+.mg40 {
+  margin: 40px;
+}
+
+.mt0 {
+  margin-top: 0;
+}
+.mt4 {
+  margin-top: 4px;
+}
+.mt8 {
+  margin-top: 8px;
+}
+.mt10 {
+  margin-top: 10px;
+}
+.mt12 {
+  margin-top: 12px;
+}
+.mt16 {
+  margin-top: 16px;
+}
+.mt20 {
+  margin-top: 20px;
+}
+.mt24 {
+  margin-top: 24px;
+}
+.mt30 {
+  margin-top: 30px;
+}
+.mt32 {
+  margin-top: 32px;
+}
+.mt36 {
+  margin-top: 36px;
+}
+.mt40 {
+  margin-top: 40px;
+}
+
+.mr0 {
+  margin-right: 0;
+}
+.mr4 {
+  margin-right: 4px;
+}
+.mr8 {
+  margin-right: 8px;
+}
+.mr10 {
+  margin-right: 10px;
+}
+.mr12 {
+  margin-right: 12px;
+}
+.mr16 {
+  margin-right: 16px;
+}
+.mr20 {
+  margin-right: 20px;
+}
+.mr24 {
+  margin-right: 24px;
+}
+.mr30 {
+  margin-right: 30px;
+}
+.mr32 {
+  margin-right: 32px;
+}
+.mr40 {
+  margin-right: 40px;
+}
+
+.mb0 {
+  margin-bottom: 0;
+}
+.mb4 {
+  margin-bottom: 4px;
+}
+.mb8 {
+  margin-bottom: 8px;
+}
+.mb10 {
+  margin-bottom: 10px;
+}
+.mb12 {
+  margin-bottom: 12px;
+}
+.mb16 {
+  margin-bottom: 16px;
+}
+.mb20 {
+  margin-bottom: 20px;
+}
+.mb24 {
+  margin-bottom: 24px;
+}
+.mb30 {
+  margin-bottom: 30px;
+}
+.mb32 {
+  margin-bottom: 32px;
+}
+.mb36 {
+  margin-bottom: 36px;
+}
+.mb40 {
+  margin-bottom: 40px;
+}
+
+.ml0 {
+  margin-left: 0;
+}
+.ml4 {
+  margin-left: 4px;
+}
+.ml8 {
+  margin-left: 8px;
+}
+.ml10 {
+  margin-left: 10px;
+}
+.ml12 {
+  margin-left: 12px;
+}
+.ml16 {
+  margin-left: 16px;
+}
+.ml20 {
+  margin-left: 20px;
+}
+.ml24 {
+  margin-left: 24px;
+}
+.ml30 {
+  margin-left: 30px;
+}
+.ml32 {
+  margin-left: 32px;
+}
+.ml36 {
+  margin-left: 36px;
+}
+.ml40 {
+  margin-left: 40px;
+}
+
+.pd0 {
+  padding: 0;
+}
+.pd4 {
+  padding: 4px;
+}
+.pd8 {
+  padding: 8px;
+}
+.pd10 {
+  padding: 10px;
+}
+.pd12 {
+  padding: 12px;
+}
+.pd16 {
+  padding: 16px;
+}
+.pd20 {
+  padding: 20px;
+}
+.pd24 {
+  padding: 24px;
+}
+.pd30 {
+  padding: 30px;
+}
+.pd32 {
+  padding: 32px;
+}
+.pd40 {
+  padding: 40px;
+}
+
+.pt0 {
+  padding-top: 0;
+}
+.pt4 {
+  padding-top: 4px;
+}
+.pt8 {
+  padding-top: 8px;
+}
+.pt10 {
+  padding-top: 10px;
+}
+.pt12 {
+  padding-top: 12px;
+}
+.pt16 {
+  padding-top: 16px;
+}
+.pt20 {
+  padding-top: 20px;
+}
+.pt24 {
+  padding-top: 24px;
+}
+.pt30 {
+  padding-top: 30px;
+}
+.pt32 {
+  padding-top: 32px;
+}
+.pt40 {
+  padding-top: 40px;
+}
+
+.pr0 {
+  padding-right: 0;
+}
+.pr4 {
+  padding-right: 4px;
+}
+.pr8 {
+  padding-right: 8px;
+}
+.pr10 {
+  padding-right: 10px;
+}
+.pr12 {
+  padding-right: 12px;
+}
+.pr16 {
+  padding-right: 16px;
+}
+.pr20 {
+  padding-right: 20px;
+}
+.pr24 {
+  padding-right: 24px;
+}
+.pr30 {
+  padding-right: 30px;
+}
+.pr32 {
+  padding-right: 32px;
+}
+.pr40 {
+  padding-right: 40px;
+}
+
+.pb0 {
+  padding-bottom: 0;
+}
+.pb4 {
+  padding-bottom: 4px;
+}
+.pb8 {
+  padding-bottom: 8px;
+}
+.pb10 {
+  padding-bottom: 10px;
+}
+.pb12 {
+  padding-bottom: 12px;
+}
+.pb16 {
+  padding-bottom: 16px;
+}
+.pb20 {
+  padding-bottom: 20px;
+}
+.pb24 {
+  padding-bottom: 24px;
+}
+.pb30 {
+  padding-bottom: 30px;
+}
+.pb32 {
+  padding-bottom: 32px;
+}
+.pb40 {
+  padding-bottom: 40px;
+}
+
+.pl0 {
+  padding-left: 0;
+}
+.pl4 {
+  padding-left: 4px;
+}
+.pl8 {
+  padding-left: 8px;
+}
+.pl10 {
+  padding-left: 10px;
+}
+.pl12 {
+  padding-left: 12px;
+}
+.pl16 {
+  padding-left: 16px;
+}
+.pl20 {
+  padding-left: 20px;
+}
+.pl24 {
+  padding-left: 24px;
+}
+.pl30 {
+  padding-left: 30px;
+}
+.pl32 {
+  padding-left: 32px;
+}
+.pl40 {
+  padding-left: 40px;
+}
+
+/**
+ * Reset
+ */
+*, :before, :after {
+  box-sizing: border-box;
+}
+
+ul,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+th {
+  font-weight: normal;
+}
+
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+body {
+  margin: 0;
+}
+
+main {
+  display: block;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+}
+
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+a {
+  background-color: transparent;
+}
+
+abbr[title] {
+  border-bottom: none; /* 1 */
+  text-decoration: underline; /* 2 */
+  text-decoration: underline dotted; /* 2 */
+}
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+small {
+  font-size: 80%;
+}
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+img {
+  border-style: none;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
+}
+
+button,
+input { /* 1 */
+  overflow: visible;
+}
+
+button,
+select { /* 1 */
+  text-transform: none;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+}
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
+
+legend {
+  box-sizing: border-box; /* 1 */
+  color: inherit; /* 2 */
+  display: table; /* 1 */
+  max-width: 100%; /* 1 */
+  padding: 0; /* 3 */
+  white-space: normal; /* 1 */
+}
+
+progress {
+  vertical-align: baseline;
+}
+
+textarea {
+  overflow: auto;
+}
+
+[type="checkbox"],
+[type="radio"] {
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
+}
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+[type="search"] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+details {
+  display: block;
+}
+
+summary {
+  display: list-item;
+}
+
+template {
+  display: none;
+}
+
+[hidden] {
+  display: none;
+}

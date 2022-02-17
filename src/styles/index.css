@@ -1,0 +1,41 @@
+@import './base.css';
+@import './variables.css';
+@import './cover.css';
+@import './fonts/fonts.css';
+@import './icons/icons.css';
+
+body {
+  min-width: 1080px;
+  min-height: 100vh;
+  color: var(--text-color);
+  font-size: var(--font-size);
+  background-color: var(--bg-color);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, segoe ui, Roboto, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-variant-numeric: tabular-nums;
+}
+
+/* layout */
+.layout-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--layout-header-height);
+  background-color: var(--bg-color-header);
+}
+.layout-aside {
+  position: fixed;
+  top: var(--layout-header-height);
+  left: 0;
+  bottom: 0;
+  width: var(--layout-aside-width);
+  background-color: var(--bg-color-aside);
+}
+.layout-content {
+  min-height: 100vh;
+  padding-top: var(--layout-header-height);
+  padding-left: var(--layout-aside-width);
+  background-color: var(--bg-color-content);
+}

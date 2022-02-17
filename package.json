@@ -1,0 +1,64 @@
+{
+  "name": "vue3-template",
+  "version": "0.1.0",
+  "author": "Yorn Qiu",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 5050",
+    "test:e2e": "start-server-and-test preview http://127.0.0.1:5050/ 'cypress open'",
+    "test:e2e:ci": "start-server-and-test preview http://127.0.0.1:5050/ 'cypress run'",
+    "test:unit": "cypress open-ct",
+    "test:unit:ci": "cypress run-ct --quiet --reporter spec",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
+  },
+  "dependencies": {
+    "@vueuse/core": "^7.6.2",
+    "axios": "^0.26.0",
+    "element-plus": "^2.0.2",
+    "pinia": "^2.0.11",
+    "vue": "^3.2.29",
+    "vue-router": "^4.0.12"
+  },
+  "devDependencies": {
+    "@cypress/vite-dev-server": "^2.2.2",
+    "@cypress/vue": "^3.1.0",
+    "@vitejs/plugin-vue": "^2.1.0",
+    "@vue/eslint-config-prettier": "^7.0.0",
+    "cypress": "^9.4.1",
+    "eslint": "^8.5.0",
+    "eslint-plugin-cypress": "^2.12.1",
+    "eslint-plugin-vue": "^8.2.0",
+    "prettier": "^2.5.1",
+    "sass": "^1.49.7",
+    "start-server-and-test": "^1.14.0",
+    "vite": "^2.7.13"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "plugin:vue/vue3-essential",
+      "eslint:recommended",
+      "@vue/eslint-config-prettier"
+    ],
+    "env": {
+      "node": true,
+      "vue/setup-compiler-macros": true
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/__tests__/*.spec.{js,ts,jsx,tsx}",
+          "cypress/integration/**.spec.{js,ts,jsx,tsx}"
+        ],
+        "extends": [
+          "plugin:cypress/recommended"
+        ]
+      }
+    ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "printWidth": 120
+  }
+}
