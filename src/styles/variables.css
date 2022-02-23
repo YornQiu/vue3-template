@@ -2,83 +2,95 @@
  * @Author: Yorn Qiu
  * @Date: 2022-02-15 17:51:32
  * @LastEditors: Yorn Qiu
- * @LastEditTime: 2022-02-17 12:37:00
+ * @LastEditTime: 2022-02-23 15:10:37
  * @Description: css variables
  * @FilePath: /vue3-template/src/styles/variables.css
  */
 
 :root {
-  /* theme-color 主题色 */
-  --theme-color: #4ca9ff;
-  --theme-color-dark: #3685d9;
-  --theme-color-light: #349DFF;
-  --theme-color-hover: #349DFF;
-  --theme-color-active: #349DFF;
-  --theme-color-disabled: #4778B3;
-
-  /* text-color 文字颜色 */
-  --text-color: #000;
-  --text-color-dark: #9b9b9b;
-  --text-color-light: #4ca9ff;
-
-  /* background-color 背景色 */
-  --bg-color: #fff;
-  --bg-color-aside: #eff0f3;
-  --bg-color-header: #ebeff3;
-  --bg-color-footer: #ebeff3;
-  --bg-color-content: #fff;
-
-  /* border 边框 */
-  --border-color: #00aaff;
-  --border-width: 1px;
-  --border-radius: 0;
-  --border-type: solid;
-  --border-base: var(--border-width) solid var(--border-color);
-
-  /* font-size 字体 */
-  --font-size: 14px;
-  --font-size-s: 12px;
-  --font-size-l: 18px;
-
-  /* layout */
-  --layout-header-height: 60px;
-  --layout-aside-width: 300px;
+   /* hsl value for calculate, same as --color */
+   --h: 213;
+   --s: 72%;
+   --l: 35%;
+   
+   /* color 主题色 */
+   --color: #19539b;
+   --color-dark: #123c6f;
+   --color-light: #3b84df;
+   --color-hover: #1f6ac7; /* hsl(213, 72%, 45%) , 45% lightness */
+   --color-active: #1f6ac7;  /* hsl(213, 72%, 45%) , 45% lightness */
+   --color-disabled: #3e5774; /* hsl(213, 30%, 35%) , 30% saturation */
+ 
+   /* text-color 文字颜色 */
+   --text-color: #303133;
+   --text-color-primary: #303133;
+   --text-color-regular: #606266;
+   --text-color-secondary: #909399;
+   --text-color-placeholder: #c0c4cc;
+ 
+   /* background-color 背景色 */
+   --bg-color: #fff;
+   --bg-color-2: #f7f7f7;
+   --bg-color-3: #eee;
+   --bg-color-4: #e6e6e6;
+ 
+   --color-white: #fff;
+   --color-black: #000;
+ 
+   /* border 边框 */
+   --border-color: hsl(213, 15%, 85%);
+   --border-color-2: hsl(213, 20%, 91%);
+   --border-color-3: hsl(213, 33%, 94%);
+   --border-color-4: hsl(213, 63%, 97%);
+   
+   --border-width: 1px;
+   --border-radius: 0;
+   --border-type: solid;
+   --border-base: var(--border-width) solid var(--border-color);
+ 
+   /* font-size 字体 */
+   --font-size: 14px;
+   --font-size-s: 12px;
+   --font-size-l: 18px;
+ 
+   /* layout */
+   --layout-header-height: 80px;
+   --layout-aside-width: 264px;
 }
 
 [data-theme="dark"] {
-  /* theme-color 主题色 */
-  --theme-color: #4ca9ff;
-  --theme-color-dark: #3685d9;
-  --theme-color-light: #349DFF;
-  --theme-color-hover: #349DFF;
-  --theme-color-active: #349DFF;
-  --theme-color-disabled: #4778B3;
+  /* hsl value for calculate, same as --color */
+  --h: 213;
+  --s: 100%;
+  --l: 65%;
+
+  /* color 主题色 */
+  --color: #4d9dff;
+  --color-dark: #0077e5;
+  --color-light: #7fc1ff;
+  --color-hover: #66abff; /* hsl(213, 100%, 70%) , 70% lightness */
+  --color-active: #66abff;  /* hsl(213, 100%, 70%) , 70% lightness */
+  --color-disabled: #79a1d2; /* hsl(213, 50%, 65%) , 50% saturation */
 
   /* text-color 文字颜色 */
-  --text-color: #f0f4ff;
-  --text-color-dark: #A6ACCD;
-  --text-color-light: #79C0FF;
+  --text-color: #f7fbff;
+  --text-color-primary: #f7fbff;
+  --text-color-regular: #d5e8ff;
+  --text-color-secondary: #b3d5ff;
+  --text-color-placeholder: #546983;
 
   /* background-color 背景色 */
-  --bg-color: #051029;
-  --bg-color-aside: #0d2745;
-  --bg-color-header: #032045;
-  --bg-color-footer: #032045;
-  --bg-color-content: #051029;
+  --bg-color: #00132b;
+  --bg-color-2: #001b3c;
+  --bg-color-3: #00234d;
+  --bg-color-4: #002a5e;
 
   /* border 边框 */
-  --border-color: #00aaff;
-  --border-width: 1px;
-  --border-radius: 0;
-  --border-type: solid;
-  --border-base: var(--border-width) solid var(--border-color);
+  --border-color: hsl(213, 60%, 23%);
+  --border-color-2: hsl(213, 70%, 17%);
+  --border-color-3: hsl(213, 80%, 14%);
+  --border-color-4: hsl(213, 90%, 11%);
 
-  /* font-size 字体 */
-  --font-size: 14px;
-  --font-size-s: 12px;
-  --font-size-l: 18px;
-
-  /* layout */
-  --layout-header-height: 60px;
-  --layout-aside-width: 300px;
+  --color-white: #00132b;
+  --color-black: #f7fbff;
 }

@@ -2,7 +2,7 @@
  * @Author: Yorn Qiu
  * @Date: 2022-02-17 10:35:28
  * @LastEditors: Yorn Qiu
- * @LastEditTime: 2022-02-17 11:43:10
+ * @LastEditTime: 2022-02-23 15:11:18
  * @Description: element-plus css variables cover
  * @FilePath: /vue3-template/src/styles/cover.css
  */
@@ -10,7 +10,7 @@
 /* here are all el variables */
 /* only modify which need to be covered */
 :root {
-  --el-color-primary: var(--theme-color);
+  --el-color-primary: var(--color);
   /* --el-color-white: #ffffff;
   --el-color-black: #000000;
   --el-color-primary-light-1: #53a8ff;
