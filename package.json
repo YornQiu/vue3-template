@@ -25,6 +25,7 @@
     "@cypress/vue": "^3.1.0",
     "@vitejs/plugin-vue": "^2.2.2",
     "@vue/eslint-config-prettier": "^7.0.0",
+    "autoprefixer": "^10.4.2",
     "cypress": "^9.5.0",
     "eslint": "^8.5.0",
     "eslint-plugin-cypress": "^2.12.1",
@@ -60,5 +61,15 @@
   "prettier": {
     "singleQuote": true,
     "printWidth": 120
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
   }
 }
