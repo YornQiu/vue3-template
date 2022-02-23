@@ -1,8 +1,8 @@
 /*
- * @Author: YornQiu
+ * @Author: Yorn Qiu
  * @Date: 2021-04-10 20:33:12
  * @LastEditors: Yorn Qiu
- * @LastEditTime: 2022-02-17 16:02:34
+ * @LastEditTime: 2022-02-23 17:05:17
  * @Description: vue directives
  * @FilePath: /vue3-template/src/directives/index.js
  */
