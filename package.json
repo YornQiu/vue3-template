@@ -13,9 +13,9 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
-    "@vueuse/core": "^7.6.2",
     "axios": "^0.26.0",
-    "element-plus": "^2.0.2",
+    "element-plus": "^2.1.17",
+    "lodash-es": "^4.17.21",
     "pinia": "^2.0.11",
     "vue": "^3.2.31",
     "vue-router": "^4.0.12"
@@ -30,9 +30,12 @@
     "eslint": "^8.5.0",
     "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-vue": "^8.5.0",
+    "postcss": "^8.4.12",
     "prettier": "^2.5.1",
-    "sass": "^1.49.8",
+    "sass": "^1.49.10",
     "start-server-and-test": "^1.14.0",
+    "unplugin-auto-import": "^0.6.6",
+    "unplugin-vue-components": "^0.18.4",
     "vite": "^2.8.4"
   },
   "eslintConfig": {
