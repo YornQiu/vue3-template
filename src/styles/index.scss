@@ -1,8 +1,11 @@
-@import './base.css';
 @import './variables.css';
 @import './fonts/fonts.css';
 @import './icons/icons.css';
 @import './element-plus.scss';
+
+*, :before, :after {
+  box-sizing: border-box;
+}
 
 body {
   min-width: 1080px;
