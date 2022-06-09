@@ -2,7 +2,7 @@
  * @Author: Yorn Qiu
  * @Date: 2022-02-15 17:51:32
  * @LastEditors: Yorn Qiu
- * @LastEditTime: 2022-04-01 10:55:08
+ * @LastEditTime: 2022-06-09 12:38:04
  * @Description: css variables
  * @FilePath: /vue3-template/src/styles/variables.css
  */
@@ -75,7 +75,7 @@
   --layout-aside-width: 264px;
 }
 
-[data-theme='dark'] {
+[theme='dark'] {
   /* hsl value for calculate, same as --color */
   --h: 213;
   --s: 100%;

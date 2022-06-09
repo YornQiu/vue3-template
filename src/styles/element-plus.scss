@@ -2,7 +2,7 @@
  * @Author: Yorn Qiu
  * @Date: 2022-02-17 10:35:28
  * @LastEditors: Yorn Qiu
- * @LastEditTime: 2022-04-01 10:55:23
+ * @LastEditTime: 2022-06-09 12:37:57
  * @Description: element-plus css variables and style cover
  * @FilePath: /vue3-template/src/styles/element-plus.scss
  */
@@ -46,6 +46,10 @@
   --el-fill-color-dark: var(--base-color-dark)  !important;
   --el-fill-color-darker: var(--base-color-darker)  !important;
   --el-fill-color-blank: var(--base-color-blank)  !important;
+
+  --el-bg-color: var(--bg-color) !important;
+  --el-bg-color-page: var(--bg-color) !important;
+  --el-bg-color-overlay: var(--bg-color) !important;
 
   /* 
     color-scheme: light;
