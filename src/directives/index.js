@@ -2,17 +2,17 @@
  * @Author: Yorn Qiu
  * @Date: 2021-04-10 20:33:12
  * @LastEditors: Yorn Qiu
- * @LastEditTime: 2022-02-23 17:05:17
- * @Description: vue directives
+ * @LastEditTime: 2023-12-19 13:40:56
  * @FilePath: /vue3-template/src/directives/index.js
+ * @Description: common vue directives
  */
 
 /**
  * v-focus
  * 自动聚焦元素
  */
-const focus = {
-  inserted(el) {
+export const vFocus = {
+  mounted(el) {
     el.focus();
   },
 };
@@ -21,8 +21,8 @@ const focus = {
  * v-copy="text"
  * 单击或双击复制文本内容
  */
-const copy = {
-  bind(el, { value, modifiers }) {
+export const vCopy = {
+  mounted(el, { value, modifiers }) {
     el.$value = value;
     el.handler = () => {
       if (!el.$value) {
@@ -32,7 +32,7 @@ const copy = {
       // 动态创建 textarea 标签
       const textarea = document.createElement('textarea');
       // 将该 textarea 设为 readonly 防止 iOS 下自动唤起键盘，同时将 textarea 移出可视区域
-      textarea.readOnly = 'readonly';
+      textarea.readOnly = true;
       textarea.style.position = 'absolute';
       textarea.style.left = '-9999px';
       // 将要 copy 的值赋给 textarea 标签的 value 属性
@@ -62,71 +62,37 @@ const copy = {
     el.addEventListener(evt, el.handler);
   },
   // 当传进来的值更新的时候触发
-  componentUpdated(el, { value }) {
+  updated(el, { value }) {
     el.$value = value;
   },
   // 指令与元素解绑的时候，移除事件绑定
-  unbind(el) {
+  unmounted(el) {
     el.removeEventListener('click', el.handler);
   },
 };
 
 /**
- * v-debounce="handler"
+ * v-debounce.event:[time]="handler", event为事件类型，默认mouseup，可为空，可选keyup；time为间隔时间，默认800，可为空
  * 防抖
  */
-const debounce = {
-  inserted(el, { value, arg }) {
+export const vDebounce = {
+  mounted(el, { arg, modifiers, value }) {
     let timer;
-    el.addEventListener('keyup', () => {
-      if (timer) {
-        clearTimeout(timer);
-      }
-      timer = setTimeout(() => {
+    const time = arg ? parseInt(arg) : 800;
+    const event = modifiers.keyup ? 'keyup' : 'mouseup';
+    el.addEventListener(event, () => {
+      timer && clearTimeout(timer);
+      timer = window.setTimeout(() => {
         value();
-      }, arg || 800);
+      }, time);
     });
   },
 };
 
 /**
- * v-throttle="handler"
- * 节流
+ * 图钉
  */
-const throttle = {
-  inserted(el, { value, arg }) {
-    let timer;
-    el.addEventListener('keyup', () => {
-      if (!timer) {
-        timer = setTimeout(() => {
-          value();
-          timer = null;
-        }, arg || 800);
-      }
-    });
-  },
-};
-
-const pin = (el, { arg = 'top', value = 0 }) => {
+export const vPin = (el, { arg = 'top', value = 0 }) => {
   el.style.position = 'fixed';
   el.style[arg] = value + 'px';
-};
-
-const directives = {
-  focus,
-  copy,
-  debounce,
-  throttle,
-  pin,
-};
-
-/**
- * Usage: Vue.use(directives)
- */
-export default {
-  install(app) {
-    Object.keys(directives).forEach((key) => {
-      app.directive(key, directives[key]);
-    });
-  },
 };
