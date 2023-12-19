@@ -2,23 +2,23 @@
  * @Author: Yorn Qiu
  * @Date: 2020-12-16 15:35:55
  * @LastEditors: Yorn Qiu
- * @LastEditTime: 2022-02-17 15:58:37
- * @Description: 工具类
+ * @LastEditTime: 2023-12-19 14:07:50
  * @FilePath: /vue3-template/src/utils/index.js
+ * @Description: utils
  */
 
-import numberUtils from '@/utils/numberUtils';
-import validateUtils from '@/utils/validateUtils';
+import numberUtils from '@/utils/number-utils';
+import validateUtils from '@/utils/validate-utils';
 
 const utils = {
   /**
    * @description: 从localStorage中读取属性值
    * @param {string} key
    * @param {boolean} parse 是否将序列化的字符串转化为Object
-   * @return {string|object}
+   * @return {string|object|null}
    */
   getItem(key, parse) {
-    let value = localStorage.getItem(key);
+    const value = localStorage.getItem(key);
     if (value !== null && parse) {
       return JSON.parse(value);
     }
@@ -38,7 +38,7 @@ const utils = {
     if (typeof value === 'object') {
       localStorage.setItem(key, JSON.stringify(value));
     } else {
-      localStorage.setItem(key, value);
+      localStorage.setItem(key, `${value}`);
     }
     return true;
   },
@@ -53,7 +53,7 @@ const utils = {
 
   /**
    * @description: 判断是否为 null,undefined或""
-   * @param {string} value
+   * @param {any} value
    * @return {boolean} 是否为空
    */
   isEmpty(value) {
@@ -62,7 +62,7 @@ const utils = {
 
   /**
    * @description: 判断是否为 null或undefined
-   * @param {string} value
+   * @param {any} value
    * @return {boolean} 是否为空
    */
   isVain(value) {
@@ -74,7 +74,7 @@ const utils = {
    * @return {string} uuid
    */
   uuid() {
-    let s = [];
+    const s = [];
     const hexDigits = '0123456789abcdef';
     for (let i = 0; i < 36; i++) {
       s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
@@ -87,12 +87,23 @@ const utils = {
   },
 
   /**
-   * @description: 判断浏览器类型是否为IE
-   * @return {boolean}
+   * @description: 生成21位nanoid
+   * @return {string}
    */
-  isIE() {
-    const userAgent = navigator.userAgent;
-    return userAgent.indexOf('compatible') > -1 && userAgent.indexOf('MSIE') > -1 && userAgent.indexOf('Opera') === -1;
+  id() {
+    return crypto.getRandomValues(new Uint8Array(21)).reduce((id, byte) => {
+      byte &= 63;
+      if (byte < 36) {
+        id += byte.toString(36); // `0-9a-z`
+      } else if (byte < 62) {
+        id += (byte - 26).toString(36).toUpperCase(); // `A-Z`
+      } else if (byte == 62) {
+        id += '_';
+      } else {
+        id += '-';
+      }
+      return id;
+    }, '');
   },
 
   /**
@@ -136,6 +147,8 @@ const utils = {
         return 'IE';
       }
     }
+
+    return '';
   },
 
   /**
@@ -143,7 +156,7 @@ const utils = {
    * @param {object} option 配置选项，可选配置项为：multiple，是否支持多选，默认false；accept，接受的文件类型，默认全部
    * @return {promise} Promise对象，内容为input[file]返回的文件列表
    */
-  selectFile(option = {}) {
+  selectFile(option) {
     return new Promise((resolve, reject) => {
       const input = document.createElement('input');
       input.type = 'file';
@@ -167,17 +180,20 @@ const utils = {
    * @param {object} option 配置选项，支持multiple(多选)，accept(接受的文件类型)，params(请求参数)，beforeSelect(选择文件之前的钩子)，beforeUpload(上传文件之前的钩子)，onprogress(下载进度回调函数)
    * @return {promise} 包含请求结果的Promise对象
    */
-  async uploadFile(url, option = {}) {
-    const { beforeSelect, beforeUpload, onprogress, params } = option;
+  async uploadFile(url, option) {
+    const { beforeSelect, beforeUpload, onprogress, params, fileField } = option;
 
-    beforeSelect && beforeSelect();
+    beforeSelect && beforeSelect(params);
 
     const files = await this.selectFile(option);
     const fd = new FormData();
-    files.forEach((file) => fd.append('files', file, file.name));
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      fd.append(fileField || 'files', file, file.name);
+    }
     params && Object.keys(params).forEach((k) => fd.append(k, params[k]));
 
-    beforeUpload && beforeUpload();
+    beforeUpload && beforeUpload(params);
 
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
@@ -207,15 +223,15 @@ const utils = {
    * @param {object} option 配置选项，支持 method(请求方法)，params(请求参数)，type(参数类型)，name(文件名)，onprogress(下载进度回调函数)
    * @return {promise} 包含请求结果的Promise对象
    */
-  downloadFileAjax(url, option = {}) {
-    const { method, type, params, name, onprogress } = option;
+  downloadFileAjax(url, option) {
+    const { method, type, name, params, onprogress } = option;
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
       xhr.open(method || 'get', url, true);
       xhr.responseType = 'blob';
       xhr.setRequestHeader(
         'Content-Type',
-        type === 'json' ? 'application/json; charset=utf-8' : 'application/x-www-form-urlencoded'
+        type === 'json' ? 'application/json; charset=utf-8' : 'application/x-www-form-urlencoded',
       );
 
       const _params =
@@ -230,9 +246,9 @@ const utils = {
       xhr.onload = () => {
         if (xhr.status === 200) {
           const blob = xhr.response;
-          const fileName = xhr.getResponseHeader('Content-Disposition').substring(20);
+          const fileName = xhr.getResponseHeader('Content-Disposition')?.substring(20) || '';
           this.downloadFile(name || decodeURIComponent(fileName), blob); //解码名称
-          resolve();
+          resolve(xhr.response);
         } else {
           reject(xhr.response);
         }
@@ -252,23 +268,99 @@ const utils = {
   /**
    * @description: 文件下载
    * @param {string} fileName 文件名
-   * @param {object|string} content 文件内容或文件地址
+   * @param {string|BlobPart} content 文件内容或文件地址
    */
   downloadFile(fileName, content) {
     const a = document.createElement('a');
     a.download = fileName;
     a.style.display = 'none';
 
+    let objectUrl;
+
     if (typeof content === 'string') {
       a.href = content; // content为文件地址
+    } else if (content instanceof Blob) {
+      objectUrl = a.href = URL.createObjectURL(content); // content为Blob对象
     } else {
-      const blob = new Blob([content]);
-      a.href = URL.createObjectURL(blob); // content为文件内容
+      const blob = new Blob([content]); // content为ArrayBuffer等
+      objectUrl = a.href = URL.createObjectURL(blob);
     }
 
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
+    objectUrl && URL.revokeObjectURL(objectUrl);
+  },
+
+  /**
+   * 深复制
+   * @param value 值
+   * @returns
+   */
+  cloneDeep(value) {
+    // 非object
+    if (typeof value !== 'object' || value == null || value instanceof Error) {
+      return value;
+    }
+
+    // dom
+    if (typeof window !== 'undefined' && (value instanceof Node || value instanceof HTMLCollection)) {
+      return value;
+    }
+
+    const newValue = {};
+    const keys = Object.keys(value);
+    for (const key of keys) {
+      const val = value[key];
+      if (typeof value !== 'object' || value == null || value instanceof Error) {
+        newValue[key] = val;
+      } else if (Array.isArray(val)) {
+        newValue[key] = val.map((item) => this.cloneDeep(item));
+      } else if (val instanceof Set) {
+        const newSet = new Set();
+        val.forEach((item) => {
+          newSet.add(this.cloneDeep(item));
+        });
+        newValue[key] = newSet;
+      } else if (val instanceof Map) {
+        const newMap = new Map();
+        val.forEach((item, key) => {
+          newMap.set(key, this.cloneDeep(item));
+        });
+        newValue[key] = newMap;
+      } else {
+        newValue[key] = this.cloneDeep(val);
+      }
+    }
+
+    return newValue;
+  },
+
+  /**
+   * 日期格式化
+   * @param {string|number|undefined|null} date 可转化为Date的字符串或时间戳, 为空时返回当前时间
+   * @param {string} fmt 格式化字符串，默认为 yyyy-MM-dd HH:mm:ss
+   * @returns {string} 格式化后的日期字符串
+   */
+  dateFormat(date, fmt = 'yyyy-MM-dd HH:mm:ss') {
+    const dateObj = date ? new Date(date) : new Date();
+    const opt = {
+      'y+': dateObj.getFullYear().toString(), // 年
+      'M+': (dateObj.getMonth() + 1).toString(), // 月
+      'd+': dateObj.getDate().toString(), // 日
+      'H+': dateObj.getHours().toString(), // 时
+      'm+': dateObj.getMinutes().toString(), // 分
+      's+': dateObj.getSeconds().toString(), // 秒
+      'S+': dateObj.getMilliseconds().toString(), // 毫秒
+    };
+
+    for (const k in opt) {
+      const ret = new RegExp(`(${k})`).exec(fmt);
+      if (ret) {
+        fmt = fmt.replace(ret[1], ret[1].length == 1 ? opt[k] : opt[k].padStart(ret[1].length, '0'));
+      }
+    }
+    return fmt;
   },
 
   /**
@@ -307,7 +399,7 @@ const utils = {
   /**
    * @description: 广度优先遍历树
    * @param {object|array} tree 树或森林
-   * @param {function} handler 用来处理树节点的方法
+   * @param {Function} handler 用来处理树节点的方法
    */
   BFSTree(tree, handler) {
     if (!tree || typeof tree !== 'object') return;
@@ -325,7 +417,7 @@ const utils = {
   /**
    * @description: 广度优先遍历树
    * @param {object|array} tree 树或森林
-   * @param {function} handler 用来处理树节点的方法
+   * @param {Function} handler 用来处理树节点的方法
    */
   DFSTree(tree, handler) {
     if (!tree || typeof tree !== 'object') return;
@@ -344,7 +436,7 @@ const utils = {
    * @description: 获取树中的某一个节点，得到一个节点后直接返回，不会继续查找
    * @param {object|array} tree 树或森林
    * @param {string} id 要获取的节点id
-   * @return {object} 要获取的节点，未找到时返回undefined
+   * @return {object|undefined} 要获取的节点，未找到时返回undefined
    */
   getTreeNode(tree, id) {
     if (!tree || typeof tree !== 'object') return;
@@ -357,24 +449,6 @@ const utils = {
       if (node.id === id) return node;
       node.children && node.children.forEach((child) => queue.push(child));
     }
-  },
-
-  /**
-   * @description: 判断元素是否进入可视区域
-   * @param {Element} el 元素
-   * @param {number} offset 偏移值
-   * @return {boolean}
-   */
-  isInViewPort(el, offset) {
-    const viewPortHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-
-    if (el.getBoundingClientRect) {
-      return el.getBoundingClientRect().top <= viewPortHeight + offset;
-    }
-
-    const offsetTop = el.offsetTop;
-    const scrollTop = document.documentElement.scrollTop;
-    return offsetTop - scrollTop <= viewPortHeight + offset;
   },
 };
 
