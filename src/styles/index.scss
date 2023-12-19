@@ -3,7 +3,9 @@
 @import './icons/icons.css';
 @import './element-plus.scss';
 
-*, :before, :after {
+*,
+:before,
+:after {
   box-sizing: border-box;
 }
 
@@ -13,7 +15,14 @@ body {
   color: var(--text-color);
   font-size: var(--font-size);
   background-color: var(--bg-color);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, segoe ui, Roboto, Arial, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    segoe ui,
+    Roboto,
+    Arial,
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-variant-numeric: tabular-nums;

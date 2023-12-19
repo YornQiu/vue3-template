@@ -1,78 +1,81 @@
 /*
  * @Author: Yorn Qiu
- * @Date: 2022-02-15 17:51:32
+ * @Date: 2023-04-10 11:06:55
  * @LastEditors: Yorn Qiu
- * @LastEditTime: 2022-06-09 12:38:04
- * @Description: css variables
+ * @LastEditTime: 2023-12-19 14:21:20
  * @FilePath: /vue3-template/src/styles/variables.css
+ * @Description: theme light
  */
 
 :root {
   /* hsl value for calculate, same as --color */
   --h: 213;
   --s: 72%;
-  --l: 35%;
+  --l: 48%;
 
   /* color 主题色 */
-  --color: #19539b;
-  --color-1: #1e63b8;
-  --color-2: #2272d5;
-  --color-3: #3b84df;
-  --color-4: #5896e4;
+  --color: #2272d5;
+  --color-3: #3a84df;
   --color-5: #75a9e9;
-  --color-6: #92bbed;
   --color-7: #b0cdf2;
   --color-8: #cde0f7;
   --color-9: #eaf2fc;
-  --color-0: #14437e;
-
-  /* text-color 文字颜色 */
-  --text-color: #303133;
-  --text-color-primary: #303133;
-  --text-color-regular: #606266;
-  --text-color-secondary: #909399;
-  --text-color-placeholder: #c0c4cc;
-  --text-color-disabled: #a1a4a9;
+  --color-0: #19539a;
 
   /* background-color 背景色 */
-  --bg-color: #fff;
-  --bg-color-1: #f7f7f7;
-  --bg-color-2: #eee;
-  --bg-color-3: #e6e6e6;
-  --bg-color-4: #dee6ed;
-  --bg-color-5: #b2c4d5;
+  --bg-color: #f9fbfe;
+  --bg-color-1: #f9fbfe;
+  --bg-color-2: #f3f6fc;
+  --bg-color-3: #eaf2fb;
+  --bg-color-4: #deeaf7;
+  --bg-color-5: #d3e0ee;
+  --bg-color-6: #cbd9e6;
+  --bg-color-7: #c6d1dd;
 
-  --base-color: #e9eef3;
+  /* text-color 文字颜色 */
+  --text-color: #606266;
+  --text-color-primary: #4c4c52;
+  --text-color-regular: #606266;
+  --text-color-secondary: #909399;
+  --text-color-placeholder: #a8abb2;
+  --text-color-disabled: #c0c4cc;
+
+  /* border 边框 */
+  --border-color: #dcdfe6;
+  --border-color-light: #e4e7ed;
+  --border-color-lighter: #ebeef5;
+  --border-color-extra-light: #f2f6fc;
+  --border-color-dark: #d4d7de;
+  --border-color-darker: #cdd0d6;
+
+  /* shadow 阴影 */
+  --shadow-color: rgba(0, 0, 0, 0.24);
+  --shadow-color-dark: rgba(0, 0, 0, 0.36);
+  --shadow-color-darker: rgba(0, 0, 0, 0.48);
+  --shadow-base: 0 0 4px var(--shadow-color);
+
+  --base-color: #f0f2f5;
   --base-color-light: #f5f7fa;
-  --base-color-lighter: #ebeef5;
+  --base-color-lighter: #fafafa;
   --base-color-extra-light: #fafcff;
   --base-color-dark: #ebedf0;
   --base-color-darker: #e6e8eb;
-  --base-color-blank: #fff;
-
-  /* border 边框 */
-  --border-color: hsl(213, 15%, 85%);
-  --border-color-light: hsl(213, 20%, 85%);
-  --border-color-lighter: hsl(213, 33%, 85%);
-  --border-color-dark: hsl(213, 15%, 80%);
-  --border-color-darker: hsl(213, 15%, 70%);
+  --base-color-blank: #ffffff;
 
   --color-white: #fff;
   --color-black: #000;
+  --color-mask: rgba(255, 255, 255, 0.9);
+  --color-mask-light: rgba(255, 255, 255, 0.3);
 
-  --border-width: 1px;
-  --border-radius: 0;
-  --border-type: solid;
-  --border-base: var(--border-width) solid var(--border-color);
+  --border-radius: 4px;
+  --border-base: 1px solid var(--border-color);
 
   /* font-size 字体 */
   --font-size: 14px;
   --font-size-s: 12px;
-  --font-size-l: 18px;
-
-  /* layout */
-  --layout-header-height: 80px;
-  --layout-aside-width: 264px;
+  --font-size-l: 16px;
+  --font-size-xl: 18px;
+  --font-size-xxl: 20px;
 }
 
 [theme='dark'] {
@@ -83,47 +86,54 @@
 
   /* color 主题色 */
   --color: #4d9dff;
-  --color-1: #4295fa;
-  --color-2: #318af6;
-  --color-3: #2482f5;
-  --color-4: #167af3;
-  --color-5: #0067e6;
-  --color-6: #0058c4;
-  --color-7: #0049a2;
-  --color-8: #003a80;
-  --color-9: #002a5e;
-  --color-0: #14437e;
-
-  /* text-color 文字颜色 */
-  --text-color: #e5f2ff;
-  --text-color-primary: #d4eaff;
-  --text-color-regular: #c3e1ff;
-  --text-color-secondary: #b2d9ff;
-  --text-color-placeholder: #546983;
-  --text-color-disabled: #546983;
+  --color-3: hsl(212, 74%, 54%);
+  --color-5: hsl(211, 52%, 38%);
+  --color-7: hsl(211, 45%, 31%);
+  --color-8: hsl(213, 40%, 25%);
+  --color-9: hsl(216, 35%, 22%);
+  --color-0: #5c9aff;
 
   /* background-color 背景色 */
-  --bg-color: #122340;
-  --bg-color-1: #162a4d;
-  --bg-color-2: #19315b;
-  --bg-color-3: #214075;
-  --bg-color-4: #254782;
-  --bg-color-5: #284e90;
+  --bg-color: #1d2736;
+  --bg-color-1: #1d2736;
+  --bg-color-2: #25354a;
+  --bg-color-3: #2a3c55;
+  --bg-color-4: #2f4360;
+  --bg-color-5: #334a6b;
+  --bg-color-6: #375076;
+  --bg-color-7: #3b5781;
 
-  --base-color: #122340;
-  --base-color-light: #1f3760;
-  --base-color-lighter: #2e4976;
-  --base-color-dark: #0b182c;
-  --base-color-darker: #071120;
-  --base-color-blank: #162a4d;
+  /* text-color 文字颜色 */
+  --text-color: #e6f1ff;
+  --text-color-primary: #f7fbff;
+  --text-color-regular: #e6f1ff;
+  --text-color-secondary: #b3d5ff;
+  --text-color-placeholder: #6380ab;
+  --text-color-disabled: #526f99;
 
   /* border 边框 */
-  --border-color: hsl(213, 60%, 23%);
-  --border-color-light: hsl(213, 60%, 28%);
-  --border-color-lighter: hsl(213, 70%, 33%);
-  --border-color-dark: hsl(213, 90%, 18%);
-  --border-color-darker: hsl(213, 90%, 13%);
+  --border-color: #2a446a;
+  --border-color-light: #263d5f;
+  --border-color-lighter: #213654;
+  --border-color-extra-light: #1d2f49;
+  --border-color-dark: #2c4a77;
+  --border-color-darker: #2e5185;
 
-  --color-white: #122340;
+  /* shadow 阴影 */
+  --shadow-color: rgba(0, 0, 0, 0.24);
+  --shadow-color-dark: rgba(0, 0, 0, 0.48);
+  --shadow-color-darker: rgba(0, 0, 0, 0.72);
+
+  --base-color: #2d3e59;
+  --base-color-light: #26344b;
+  --base-color-lighter: #233043;
+  --base-color-extra-light: #212d3f;
+  --base-color-dark: #293e60;
+  --base-color-darker: #2e4876;
+  --base-color-blank: #202d3f;
+
+  --color-white: #1d2736;
   --color-black: #f7fbff;
+  --color-mask: rgba(29, 39, 54, 0.9);
+  --color-mask-light: rgba(29, 39, 54, 0.3);
 }

@@ -7,6 +7,6 @@ import TheAside from '@/components/layout/TheAside.vue';
   <TheHeader />
   <TheAside />
   <main class="layout-content">
-    <router-view />
+    <RouterView />
   </main>
 </template>
